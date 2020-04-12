@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int lastStoneWeight(vector<int>& v) {
+        
+        sort(v.begin(), v.end(), greater<int>());
+        while(v.size()>1){
+            int n1=v[0];
+            int n2=v[1];
+            
+            v.erase(v.begin());
+            v.erase(v.begin());
+            
+            if(n1>n2){
+                v.insert(v.begin(), n1-n2);
+            }
+            sort(v.begin(), v.end(), greater<int>());
+        }
+        if(v.size()==1){
+            return v[0];
+        }
+        
+        return 0;
+    }
+};
